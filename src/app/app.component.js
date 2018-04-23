@@ -1,3 +1,6 @@
 export const AppComponent = {
-  template: ``
+  template: `
+    <container>
+    </container>
+  `
 };

@@ -1,7 +1,15 @@
-import angular          from 'angular';
-import { AppComponent } from './app.component';
+import angular              from 'angular';
+import { AppComponent }     from './app.component';
+import { ComponentsModule } from './components/components.module';
+
+// Root component
 
 export const AppModule = angular
-  .module('app', [])
-  .component('app', AppComponent)
+  .module('app', [
+    ComponentsModule
+  ])
+  .component(
+    'app', 
+    AppComponent
+  )
   .name;
