@@ -1,7 +1,10 @@
 import { ContainerComponent } from './container.component';
  
-export container = angular
-  .module([])
+export const ContainerModule = angular
+  .module(
+    'container', 
+    []
+  )
   .component(
     'container',
     ContainerComponent 

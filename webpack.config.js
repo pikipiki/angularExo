@@ -34,7 +34,7 @@ const html = {
   ]
 };
 
-// SASS convert into CSS
+// SASS files convert into CSS files
 const styles = {
   test: /\.scss$/,
   use: ExtractTextPlugin.extract(

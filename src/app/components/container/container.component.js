@@ -1,4 +1,4 @@
-export ContainerComponent = {
+export const ContainerComponent = {
   template: `
 
     <searchLetter>
