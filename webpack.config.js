@@ -9,6 +9,8 @@ const paths = {
 };
 
 // Loaders
+
+// babel to convert ES6 to ES5
 const scripts = {
   test: /\.js$/,
   exclude: /node_modules/,
@@ -19,6 +21,7 @@ const scripts = {
   ]
 };
 
+// Minify Html
 const html = {
   test: /\.html$/,
   use: [
@@ -31,6 +34,7 @@ const html = {
   ]
 };
 
+// SASS convert into CSS
 const styles = {
   test: /\.scss$/,
   use: ExtractTextPlugin.extract(
@@ -51,7 +55,9 @@ const extract = {
       filename: './index.html'
     }
   ),
-  styles: new ExtractTextPlugin('css/styles.css')
+  styles: new ExtractTextPlugin(
+    'css/styles.css'
+  )
 };
 
 const config = {
