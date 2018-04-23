@@ -1,4 +1,5 @@
 import { ContainerComponent } from './container.component';
+import { DataService } from '../components.service';
  
 export const ContainerModule = angular
   .module(
@@ -8,5 +9,9 @@ export const ContainerModule = angular
   .component(
     'container',
     ContainerComponent 
+  )
+  .service(
+    'DataService',
+    DataService
   )
   .name;
