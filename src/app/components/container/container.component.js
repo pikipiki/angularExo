@@ -5,7 +5,10 @@ export const ContainerComponent = {
 
     <div 
       class='container'
-      ng-class='{'winner': $ctrl.winner}'>
+      ng-class="{
+        winner: $ctrl.checkIfWinner,
+        loser: $ctrl.numberOfTries === 0
+      }">
 
       <search-letter
         on-search='$ctrl.checkResult($event)'>
@@ -94,7 +97,7 @@ export const ContainerComponent = {
       //if number of tries superior to 0 , then you can play the games, otherwise you lose.
       if(this.numberOfTries !== 0) {
         
-        this.searchedValue = object['value'];
+        this.searchedValue = object['value'].toLowerCase();
 
       // we use immutable data, otherwise the $onchanges is not taken into account
       // yet, we need to keep track of last state
