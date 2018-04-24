@@ -1,0 +1,18 @@
+@import '../../../styles/utils';
+
+.letter-of-a-word {
+  width: calc(100%/6);
+  text-align: center;
+}
+
+.result {
+
+  span {
+    font-size: 5rem;
+  }  
+
+  .border {
+    border: 0.3rem solid black;
+  }
+
+}

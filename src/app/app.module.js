@@ -5,9 +5,11 @@ import { ComponentsModule } from './components/components.module';
 // Root component
 
 export const AppModule = angular
-  .module('app', [
-    ComponentsModule
-  ])
+  .module('app', 
+    [
+      ComponentsModule,
+    ]
+  )
   .component(
     'app', 
     AppComponent

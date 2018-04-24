@@ -1,19 +1,21 @@
 export const ContainerComponent = {
   template: `
 
-    <searchLetter>
-    </searchLetter>
+    <search-letter>
+    </search-letter>
 
-    <displayAnswer>
-    </displayAnswer>
+    <display-answer
+      country = '{{ $ctrl.randomCountry }}'>
+    </display-answer>
 
-    <displayPicture>
-    </displayPicture>
+    <display-picture>
+    </display-picture>
 
   `,
   controller: class ContainerController {
 
-    // inject DataService
+    // inject DataService (to retreive list of countries)
+    // inject UtilsFunc Service (common used functions)
     constructor(
         DataService,
         UtilsFunc
@@ -53,7 +55,7 @@ export const ContainerComponent = {
 
           // Pick a random country name
           this.randomCountry = this.countriesNoSpaceInItsName[this.randomValue].name;
-          console.log(this.randomCountry);
+          console.log(this.randomCountry)
 
         });
 
