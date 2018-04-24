@@ -29,6 +29,8 @@ export const ContainerComponent = {
     // at initialization of the component, retrieve list of countries
     $onInit() {
 
+      this.numberOfTries = 6;
+
       // filtering list of countries to only keep those with no space in their name
       // it would be hard to play hangman game with spaces
 
@@ -79,14 +81,8 @@ export const ContainerComponent = {
     // yet, we need to keep track of last state
 
       this.countrySplittedByLetter = this.countrySplittedByLetter.map((letter) => {
-        if (letter === this.searchedValue) {
-          return ''
-        } else {
-          return letter
-        }
+        return letter === this.searchedValue ? '': letter;
       });
-
-      console.log(this.newResult)
 
     }
 
