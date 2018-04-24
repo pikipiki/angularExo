@@ -28,6 +28,8 @@ export const SearchLetterComponent = {
       Guess
     </button>
   `,
+
+  // we use this alphabet array to repeat it on the 'select'
   controller: class SearchLetterController {
     $onInit() {
       this.alphabet = [
