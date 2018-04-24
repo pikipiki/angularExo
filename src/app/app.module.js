@@ -12,6 +12,7 @@ export const AppModule = angular
     'app', 
     AppComponent
   )
+  // settings key for retrieving countries via API REST
   .run(($http) => {
     'ngInject';
     $http.defaults.headers.common['X-Mashape-Key'] = 'l5eMXwY6d3mshmvnljsx6GVH9YWxp1IsKhsjsnSAZ5yXpYiGRl'
