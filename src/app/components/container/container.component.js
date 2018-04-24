@@ -6,7 +6,7 @@ export const ContainerComponent = {
     </search-letter>
 
     <display-answer
-      country = '{{ $ctrl.randomCountry }}'>
+      country = '$ctrl.countrySplittedByLetter'>
     </display-answer>
 
     <display-picture>
@@ -69,20 +69,24 @@ export const ContainerComponent = {
     }
 
     // retrieve the value typed on search bar 
-    // we will filter it
+    // if the value typed is present in the array, we replace it by an empty element
+    // we pass this array to the displayAnswer Component
+
     checkResult(object) {
       this.searchedValue = object['value'];
-      let i;
-      i = 0
 
-      for (let letter of this.countrySplittedByLetter) {
-        i ++
-        if (letter === this.searchedValue) {  
-          this.countrySplittedByLetter[i-1] = ''
+    // we use immutable data, otherwise the $onchanges is not taken into account
+    // yet, we need to keep track of last state
+
+      this.countrySplittedByLetter = this.countrySplittedByLetter.map((letter) => {
+        if (letter === this.searchedValue) {
+          return ''
+        } else {
+          return letter
         }
-      }
+      });
 
-      console.log(this.countrySplittedByLetter)
+      console.log(this.newResult)
 
     }
 

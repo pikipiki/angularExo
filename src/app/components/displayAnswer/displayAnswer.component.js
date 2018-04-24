@@ -4,7 +4,7 @@
 
 export const DisplayAnswerComponent = {
   bindings: {
-    country: '@'
+    country: '<'
   },
   template: `
 
@@ -19,15 +19,23 @@ export const DisplayAnswerComponent = {
 
       </div>
     </div>
+
+    {{$ctrl.changes}}
   `,
   controller: class DisplayAnswerController {
 
     // on change, we do a deep copy of the country we retrieved via binding from 
     // container component
 
+    $onInit() {
+      console.log(2)
+    }
+
     $onChanges(changes) {
+      console.log(changes)
       if (changes.country) {
         this.country = angular.copy(this.country)
+        console.log(this.country)
       }
     }
   }
