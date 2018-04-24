@@ -1,7 +1,7 @@
 export const DisplayPictureComponent = {
   bindings: {
     tries: '<',
-    winner: '@'
+    winner: '<'
   },
   template: `
 
@@ -21,10 +21,6 @@ export const DisplayPictureComponent = {
 
     // on change, we do a deep copy of the tries and winner we retrieved via binding from 
     // container component
-
-    $onInit() {
-      console.log(this.winner)
-    }
 
     $onChanges(changes) {
       if (changes.tries) {

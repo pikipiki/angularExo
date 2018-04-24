@@ -22,12 +22,16 @@ export const DisplayAnswerComponent = {
   `,
   controller: class DisplayAnswerController {
 
+    $onInit() {
+      this.country = '';
+    }
+
     // on change, we do a deep copy of the country we retrieved via binding from 
     // container component
 
     $onChanges(changes) {
       if (changes.country) {
-        this.country = angular.copy(this.country)
+        this.country = angular.copy(this.country);
       }
     }
   }
