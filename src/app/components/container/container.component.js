@@ -6,7 +6,8 @@ export const ContainerComponent = {
     </search-letter>
 
     <display-answer
-      country = '$ctrl.countrySplittedByLetter'>
+      country = '$ctrl.countrySplittedByLetter'
+      tries = '$ctrl.numberOfTries'>
     </display-answer>
 
     <display-picture

@@ -19,7 +19,7 @@ export const DisplayPictureComponent = {
   `,
   controller: class DisplayPictureController {
 
-    // on change, we do a deep copy of the tries and winner we retrieved via binding from 
+    // on change, we do a deep copy of the 'tries' and 'winner' we retrieved via binding from 
     // container component
 
     $onChanges(changes) {
