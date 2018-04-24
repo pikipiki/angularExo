@@ -1,0 +1,32 @@
+@import '../../../styles/mixins';
+
+.container {
+  color: white;
+  background: black;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.flowers {
+  width: 40rem;
+  margin: 0 auto;
+  padding: 0.5rem;
+  @include background-image(
+    '../../../images/flowers.jpg',
+    'cover'
+  ); 
+}
+
+.winner {
+  @include background-image(
+    '../../../images/winner.png',
+    'contain'
+  ); 
+}
+
+.loser {
+  @include background-image(
+    '../../../images/loser.jpg',
+    'contain'
+  ); 
+}

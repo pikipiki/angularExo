@@ -5,13 +5,16 @@ export const SearchLetterComponent = {
   },
   template: `
 
-    <div class="type-your-name">
+    <div 
+      class='type-your-name'>
 
-      <h1 ng-if="$ctrl.name">
+      <h1 
+        ng-if='$ctrl.name'
+        class='text-center'>
         {{ $ctrl.name }}'s Hangman game
       </h1>
 
-      <label for="name">Type your name</label>
+      <label for='name'>Type your name</label>
 
       <input 
         type='text' 
@@ -20,9 +23,10 @@ export const SearchLetterComponent = {
 
     </div>
 
-    <div class="guess-a-letter">
+    <div 
+      class='guess-a-letter pt-2'>
 
-      <label for="search">
+      <label for='search'>
         Type a letter
       </label>
 
@@ -36,7 +40,7 @@ export const SearchLetterComponent = {
         ng-model='$ctrl.value'>
         <option 
           ng-repeat = 'letter in $ctrl.alphabet'
-          value="{{ letter | lowercase }}"
+          value='{{ letter | lowercase }}'
           >
           {{ letter }}
         </option>
