@@ -22,18 +22,20 @@ export const ContainerComponent = {
     // inject UtilsFunc Service (common used functions)
     constructor(
         DataService,
-        UtilsFunc
+        UtilsFunc,
+        AppConfig
       ) {
       'ngInject';
       this.dataService = DataService
       this.utilsFunc = UtilsFunc;
+      this.appConfig = AppConfig;
     }
 
     // at initialization of the component, retrieve list of countries
     $onInit() {
 
       // number of tries before losing the game
-      this.numberOfTries = 10;
+      this.numberOfTries = this.appConfig['NUMBER_OF_TRIALS'];
 
       // filtering list of countries to only keep those with no space in their name
       // it would be hard to play hangman game with spaces
@@ -51,7 +53,7 @@ export const ContainerComponent = {
             )
             .filter(
               (country) => {
-                return this.utilsFunc.countryNameLengthEqualTo(6, country.name)
+                return this.utilsFunc.countryNameLengthEqualTo(this.appConfig['LENGTH_OF_THE_WORD'], country.name)
               }
             );
 
@@ -100,8 +102,6 @@ export const ContainerComponent = {
         // decrement tries after each click
         this.numberOfTries--
 
-        //
-        
       } 
 
     }
