@@ -11,13 +11,22 @@
   width: 40rem;
   margin: 0 auto;
   padding: 0.5rem;
-  @include background-image('../../../images/flowers.png'); 
+  @include background-image(
+    '../../../images/flowers.jpg',
+    'cover'
+  ); 
 }
 
 .winner {
-  @include background-image('../../../images/winner.png'); 
+  @include background-image(
+    '../../../images/winner.png',
+    'contain'
+  ); 
 }
 
 .loser {
-  @include background-image('../../../images/loser.jpg'); 
+  @include background-image(
+    '../../../images/loser.jpg',
+    'contain'
+  ); 
 }

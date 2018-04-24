@@ -4,5 +4,5 @@
 
 export const AppConfig = {
   NUMBER_OF_TRIALS: 10,
-  LENGTH_OF_THE_WORD: 4
+  LENGTH_OF_THE_WORD: 8
 };
