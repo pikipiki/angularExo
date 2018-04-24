@@ -1,7 +1,8 @@
 export const ContainerComponent = {
   template: `
 
-    <search-letter>
+    <search-letter
+      on-search='$ctrl.checkResult($event)'>
     </search-letter>
 
     <display-answer
@@ -53,11 +54,35 @@ export const ContainerComponent = {
             this.countriesNoSpaceInItsName.length
           );
 
-          // Pick a random country name
-          this.randomCountry = this.countriesNoSpaceInItsName[this.randomValue].name;
-          console.log(this.randomCountry)
+          // Pick a random country name and put it in lowercase
+          this.randomCountry = this.countriesNoSpaceInItsName[this.randomValue].name.toLowerCase();
+
+          // split each letter of the country name in an array
+          // and we associate with each letter, the value false
+          // every time one of the letter will be guessed, the value 
+          // which switches to true
+
+          this.countrySplittedByLetter = this.randomCountry.split('')
 
         });
+
+    }
+
+    // retrieve the value typed on search bar 
+    // we will filter it
+    checkResult(object) {
+      this.searchedValue = object['value'];
+      let i;
+      i = 0
+
+      for (let letter of this.countrySplittedByLetter) {
+        i ++
+        if (letter === this.searchedValue) {  
+          this.countrySplittedByLetter[i-1] = ''
+        }
+      }
+
+      console.log(this.countrySplittedByLetter)
 
     }
 

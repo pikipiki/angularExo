@@ -4,9 +4,7 @@ import './DisplayAnswer.scss';
 export const DisplayAnswerModule = angular
   .module(
     'displayAnswer',
-    [
-
-    ]
+    []
   )
   .component(
     'displayAnswer',
