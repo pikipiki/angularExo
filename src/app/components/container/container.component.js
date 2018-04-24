@@ -9,7 +9,9 @@ export const ContainerComponent = {
       country = '$ctrl.countrySplittedByLetter'>
     </display-answer>
 
-    <display-picture>
+    <display-picture
+      tries = '$ctrl.numberOfTries'
+      winner = '$ctrl.checkIfWinner'>
     </display-picture>
 
   `,
@@ -29,7 +31,8 @@ export const ContainerComponent = {
     // at initialization of the component, retrieve list of countries
     $onInit() {
 
-      this.numberOfTries = 6;
+      // number of tries before losing the game
+      this.numberOfTries = 10;
 
       // filtering list of countries to only keep those with no space in their name
       // it would be hard to play hangman game with spaces
@@ -75,14 +78,30 @@ export const ContainerComponent = {
     // we pass this array to the displayAnswer Component
 
     checkResult(object) {
-      this.searchedValue = object['value'];
+      //if number of tries superior to 0 , then you can play the games, otherwise you lose.
+      if(this.numberOfTries !== 0) {
+        
+        this.searchedValue = object['value'];
 
-    // we use immutable data, otherwise the $onchanges is not taken into account
-    // yet, we need to keep track of last state
+      // we use immutable data, otherwise the $onchanges is not taken into account
+      // yet, we need to keep track of last state
 
-      this.countrySplittedByLetter = this.countrySplittedByLetter.map((letter) => {
-        return letter === this.searchedValue ? '': letter;
-      });
+        this.countrySplittedByLetter = this.countrySplittedByLetter
+          .map((letter) => {
+            return letter === this.searchedValue ? '': letter;
+          });
+
+        this.checkIfWinner = this.countrySplittedByLetter
+          .every((letter) => {
+            return letter === ''
+          });
+
+        // decrement tries after each click
+        this.numberOfTries--
+
+        //
+        
+      } 
 
     }
 
