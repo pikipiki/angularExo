@@ -2,7 +2,7 @@ import angular              from 'angular';
 import { AppComponent }     from './app.component';
 import { ComponentsModule } from './components/components.module';
 import { AppConfig }        from './app.constant';
-
+import './app.scss';
 
 // Root component
 

@@ -1,11 +1,13 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const copyPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const root = `${__dirname}/src`;
 const paths = {
   app: `${root}/app/app.module.js`,
-  style: `${root}/styles`
+  style: `${root}/styles`,
+  images: `${root}/images/**/*`
 };
 
 // Loaders
@@ -40,12 +42,31 @@ const styles = {
   use: ExtractTextPlugin.extract(
     {
       fallback: 'style-loader',
-      use: [
-        'css-loader', 
-        'sass-loader'
+      use: [ 
+        {
+          loader: 'css-loader',
+          options: {
+            url: false
+          }
+        },
+        {
+          loader: 'sass-loader'
+        }
       ]
     }  
   )
+};
+
+const copy = {
+  images: new copyPlugin(
+    [
+      {
+        from: paths.images,
+        to: 'images/',
+        flatten: true
+      }
+    ]
+  )  
 };
 
 const extract = { 
@@ -56,7 +77,9 @@ const extract = {
     }
   ),
   styles: new ExtractTextPlugin(
-    'css/styles.css'
+    {
+      filename: '[name].css'
+    }
   )
 };
 
@@ -74,7 +97,8 @@ const config = {
   },
   plugins: [
     extract.html,
-    extract.styles
+    extract.styles,
+    copy.images
   ]
 };
 

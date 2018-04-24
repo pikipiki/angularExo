@@ -1,5 +1,5 @@
 import { DisplayAnswerComponent } from './displayAnswer.component';
-import './DisplayAnswer.scss';
+import './displayAnswer.scss';
 
 export const DisplayAnswerModule = angular
   .module(

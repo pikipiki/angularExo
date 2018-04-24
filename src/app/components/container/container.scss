@@ -1,0 +1,21 @@
+.container {
+  color: white;
+  background: black;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.flowers {
+  width: 40rem;
+  margin: 0 auto;
+  padding: 0.5rem;
+  background-image: url('../../../images/flowers.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.winner {
+  background-image: url('../../../images/winner.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}

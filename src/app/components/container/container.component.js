@@ -1,19 +1,29 @@
 export const ContainerComponent = {
   template: `
+  
+  <div class='flowers'>
 
-    <search-letter
-      on-search='$ctrl.checkResult($event)'>
-    </search-letter>
+    <div 
+      class='container'
+      ng-class='{'winner': $ctrl.winner}'>
 
-    <display-answer
-      country = '$ctrl.countrySplittedByLetter'
-      tries = '$ctrl.numberOfTries'>
-    </display-answer>
+      <search-letter
+        on-search='$ctrl.checkResult($event)'>
+      </search-letter>
 
-    <display-picture
-      tries = '$ctrl.numberOfTries'
-      winner = '$ctrl.checkIfWinner'>
-    </display-picture>
+      <display-answer
+        country = '$ctrl.countrySplittedByLetter'
+        tries = '$ctrl.numberOfTries'>
+      </display-answer>
+
+      <display-picture
+        tries = '$ctrl.numberOfTries'
+        winner = '$ctrl.checkIfWinner'>
+      </display-picture>
+
+    </div>
+    
+  </div>
 
   `,
   controller: class ContainerController {

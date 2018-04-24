@@ -1,6 +1,7 @@
 import { ContainerComponent } from './container.component';
 import { DataService }        from '../components.service';
 import { UtilsFunc }          from '../components.service';
+import './container.scss';
  
 export const ContainerModule = angular
   .module(
