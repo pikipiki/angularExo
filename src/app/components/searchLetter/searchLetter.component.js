@@ -10,6 +10,15 @@ export const SearchLetterComponent = {
       ng-model='$ctrl.value'
       id='#search'
       maxlength=1>
+  <select
+    ng-model='$ctrl.value'>
+    <option 
+      ng-repeat = 'letter in $ctrl.alphabet'
+      value="{{ letter | lowercase }}"
+      >
+      {{ letter }}
+    </option>
+  </select>
     <button
       ng-click='$ctrl.onSearch({
         $event: {
@@ -19,5 +28,36 @@ export const SearchLetterComponent = {
       Guess
     </button>
   `,
-  controller: class SearchLetterController{}
+  controller: class SearchLetterController {
+    $onInit() {
+      this.alphabet = [
+        'A',
+        'B',
+        'C',
+        'D',
+        'E',
+        'F',
+        'G',
+        'H',
+        'I',
+        'J',
+        'K',
+        'L',
+        'M',
+        'N',
+        'O',
+        'P',
+        'Q',
+        'R',
+        'S',
+        'T',
+        'U',
+        'V',
+        'W',
+        'X',
+        'Y',
+        'Z'
+      ]
+    };
+  }
 };
