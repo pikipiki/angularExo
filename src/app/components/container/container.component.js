@@ -47,6 +47,8 @@ export const ContainerComponent = {
     // at initialization of the component, retrieve list of countries
     $onInit() {
 
+      this.newObject = {};
+
       // number of tries before losing the game
       this.numberOfTries = this.appConfig['NUMBER_OF_TRIALS'];
 
@@ -83,7 +85,22 @@ export const ContainerComponent = {
           // every time one of the letter will be guessed, the value 
           // which switches to true
 
-          this.countrySplittedByLetter = this.randomCountry.split('')
+          this.countrySplittedByLetter = this.randomCountry
+            .split('')
+            .map((letter, index) => {
+              return Object
+                .assign(
+                  {}, 
+                  {
+                    [letter]: false
+                  } 
+                );
+            });
+
+          // Display the right answer in the console
+          // console.log(this.countrySplittedByLetter)
+
+          this.newCountrySplittedByLetter = Array(this.appConfig['LENGTH_OF_THE_WORD']).fill(null)
 
         });
 
@@ -94,22 +111,43 @@ export const ContainerComponent = {
     // we pass this array to the displayAnswer Component
 
     checkResult(object) {
-      //if number of tries superior to 0 , then you can play the games, otherwise you lose.
-      if(this.numberOfTries !== 0) {
+
+      // retrieve the value typed in the search bar
+      this.searchedValue = object['value']
+
+      //if number of tries superior to 0 and if the search bar is not empty , 
+      //then you can play the games, otherwise you lose.
+
+      if (this.numberOfTries !== 0 && this.searchedValue) {
         
-        this.searchedValue = object['value'].toLowerCase();
+        // convert search value to lowercae
+        this.searchedValueToLowerCase = this.searchedValue.toLowerCase();
 
       // we use immutable data, otherwise the $onchanges is not taken into account
-      // yet, we need to keep track of last state
+      // if the answer is the search bar is right, switch its associated value to 'true'
 
         this.countrySplittedByLetter = this.countrySplittedByLetter
-          .map((letter) => {
-            return letter === this.searchedValue ? '': letter;
-          });
+          .map((obj) => {
+            this.typedletter = Object.keys(obj)[0]
+            if(this.searchedValueToLowerCase === this.typedletter) {
+              return Object
+                .assign(
+                  {}, 
+                  {
+                    [this.typedletter]: true
+                  } 
+                );
+            } else {
+              return obj;            
+            }
+          })
+
+        // the winning condition is that all guessed letters have the value 'true'
 
         this.checkIfWinner = this.countrySplittedByLetter
-          .every((letter) => {
-            return letter === ''
+          .every((obj) => {
+            this.key = obj[Object.keys(obj)]
+            return this.key === true
           });
 
         // decrement tries after each click
