@@ -8,7 +8,6 @@ export const DisplayAnswerComponent = {
     tries: '<'
   },
   template: `
-
     <div 
       class='result text-center flex-row'
       ng-hide='$ctrl.tries === 10'>
@@ -22,7 +21,6 @@ export const DisplayAnswerComponent = {
 
       </div>
     </div>
-
   `,
   controller: class DisplayAnswerController {
 
@@ -36,6 +34,24 @@ export const DisplayAnswerComponent = {
       if (changes.tries) {
         this.tries = angular.copy(this.tries);
       }
+
+      // we convert the array-objects into a simple array 
+      // in this array: 
+      // - any letters with true value, will be displayed
+      // - any letters with false value, will be empty, thus with empty value 
+
+      if (this.country) {
+        this.country = this.country
+          .map((obj) => {
+            this.typedletter = Object.keys(obj)[0]
+            if (obj[this.typedletter] === true) {
+              return this.typedletter;
+            } else {
+              return '';
+            }
+          });
+      }
+
     }
   }
 };
